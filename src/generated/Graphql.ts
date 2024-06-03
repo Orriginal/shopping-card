@@ -10,75 +10,79 @@ export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' |
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-    ID: { input: string; output: string };
-    String: { input: string; output: string };
-    Boolean: { input: boolean; output: boolean };
-    Int: { input: number; output: number };
-    Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
 };
 
 export type Item = {
-    __typename?: 'Item';
-    id: Scalars['ID']['output'];
-    pictureUri: Scalars['String']['output'];
-    price: Scalars['Float']['output'];
-    stockAmount: Scalars['Int']['output'];
-    title: Scalars['String']['output'];
+  __typename?: 'Item';
+  id: Scalars['ID']['output'];
+  pictureUri: Scalars['String']['output'];
+  price: Scalars['Float']['output'];
+  stockAmount: Scalars['Int']['output'];
+  title: Scalars['String']['output'];
 };
 
 export type Mutation = {
-    __typename?: 'Mutation';
-    createItem: Item;
-    deleteItem: Scalars['ID']['output'];
-    updateItem: Item;
+  __typename?: 'Mutation';
+  createItem: Item;
+  deleteItem: Scalars['ID']['output'];
+  updateItem: Item;
 };
+
 
 export type MutationCreateItemArgs = {
-    pictureUri?: InputMaybe<Scalars['String']['input']>;
-    price: Scalars['Float']['input'];
-    stockAmount: Scalars['Int']['input'];
-    title: Scalars['String']['input'];
+  pictureUri?: InputMaybe<Scalars['String']['input']>;
+  price: Scalars['Float']['input'];
+  stockAmount: Scalars['Int']['input'];
+  title: Scalars['String']['input'];
 };
+
 
 export type MutationDeleteItemArgs = {
-    id: Scalars['ID']['input'];
+  id: Scalars['ID']['input'];
 };
 
+
 export type MutationUpdateItemArgs = {
-    id: Scalars['ID']['input'];
-    pictureUri?: InputMaybe<Scalars['String']['input']>;
-    price?: InputMaybe<Scalars['Float']['input']>;
-    stockAmount?: InputMaybe<Scalars['Int']['input']>;
-    title?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['ID']['input'];
+  pictureUri?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  stockAmount?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Query = {
-    __typename?: 'Query';
-    getItem?: Maybe<Item>;
-    getItems: Array<Item>;
+  __typename?: 'Query';
+  getItem?: Maybe<Item>;
+  getItems: Array<Item>;
 };
+
 
 export type QueryGetItemArgs = {
-    id: Scalars['ID']['input'];
+  id: Scalars['ID']['input'];
 };
 
-export type StoreItemsQueryVariables = Exact<{ [key: string]: never }>;
+export type StoreItemsQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type StoreItemsQuery = {
-    __typename?: 'Query';
-    getItems: Array<{ __typename?: 'Item'; title: string; price: number; pictureUri: string; stockAmount: number }>;
-};
+
+export type StoreItemsQuery = { __typename?: 'Query', getItems: Array<{ __typename?: 'Item', id: string, title: string, price: number, pictureUri: string, stockAmount: number }> };
+
 
 export const StoreItemsDocument = gql`
     query StoreItems {
-        getItems {
-            title
-            price
-            pictureUri
-            stockAmount
-        }
-    }
-`;
+  getItems {
+    id
+    title
+    price
+    pictureUri
+    stockAmount
+  }
+}
+    `;
 
 /**
  * __useStoreItemsQuery__
@@ -96,21 +100,17 @@ export const StoreItemsDocument = gql`
  * });
  */
 export function useStoreItemsQuery(baseOptions?: Apollo.QueryHookOptions<StoreItemsQuery, StoreItemsQueryVariables>) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<StoreItemsQuery, StoreItemsQueryVariables>(StoreItemsDocument, options);
-}
-export function useStoreItemsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<StoreItemsQuery, StoreItemsQueryVariables>
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<StoreItemsQuery, StoreItemsQueryVariables>(StoreItemsDocument, options);
-}
-export function useStoreItemsSuspenseQuery(
-    baseOptions?: Apollo.SuspenseQueryHookOptions<StoreItemsQuery, StoreItemsQueryVariables>
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useSuspenseQuery<StoreItemsQuery, StoreItemsQueryVariables>(StoreItemsDocument, options);
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<StoreItemsQuery, StoreItemsQueryVariables>(StoreItemsDocument, options);
+      }
+export function useStoreItemsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StoreItemsQuery, StoreItemsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<StoreItemsQuery, StoreItemsQueryVariables>(StoreItemsDocument, options);
+        }
+export function useStoreItemsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<StoreItemsQuery, StoreItemsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<StoreItemsQuery, StoreItemsQueryVariables>(StoreItemsDocument, options);
+        }
 export type StoreItemsQueryHookResult = ReturnType<typeof useStoreItemsQuery>;
 export type StoreItemsLazyQueryHookResult = ReturnType<typeof useStoreItemsLazyQuery>;
 export type StoreItemsSuspenseQueryHookResult = ReturnType<typeof useStoreItemsSuspenseQuery>;
