@@ -1,11 +1,23 @@
 import '@mantine/core/styles.css';
-import { MantineProvider } from '@mantine/core';
-import Store from './components/Store';
+import { createTheme, MantineProvider } from '@mantine/core';
+import Store from './components/Store/Store';
+import Header from './components/Header/Header';
+import DataProvider from './providers/DataProvider';
+
+const theme = createTheme({
+    fontFamily: 'Roboto, sans-serif',
+});
 
 function App() {
     return (
-        <MantineProvider>
-            <Store />
+        <MantineProvider
+            defaultColorScheme="dark"
+            theme={theme}
+        >
+            <DataProvider>
+                <Header />
+                <Store />
+            </DataProvider>
         </MantineProvider>
     );
 }

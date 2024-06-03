@@ -5,12 +5,12 @@ const schema = buildSchema(`
     id: ID!
     title: String!
     price: Float!
-    pictureUri: String
+    pictureUri: String!
     stockAmount: Int!
   }
 
   type Query {
-        getItems: [Item]
+        getItems: [Item!]!
         getItem(id: ID!): Item
     }
 

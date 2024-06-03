@@ -1,5 +1,5 @@
 import { TShoppingItem } from '../types/DatabaseTypes';
-import { NumberHelper } from '../../src/helpers/numberHelper';
+import { NumberHelper } from '../../src/helpers/NumberHelper';
 
 /**
  * Get the items from the Giphy API and convert them to shopping items.
@@ -10,11 +10,11 @@ export class GiphyDataProvider {
         const response = await fetch(url);
         const data = (await response.json()).data;
         return data.map(
-            ({ id, title, embed_url }: { id: string; title: string; embed_url: string }): TShoppingItem => ({
+            ({ id, title, images }: { id: string; title: string; images: any }): TShoppingItem => ({
                 id: id,
                 title: title,
                 price: NumberHelper.randomNumber(3, 18),
-                pictureUri: embed_url,
+                pictureUri: images.original.url,
                 stockAmount: NumberHelper.randomNumber(5, 50),
             })
         );
