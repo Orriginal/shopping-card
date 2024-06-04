@@ -6,6 +6,7 @@ interface ShoppingCartState {
     isCartOpen: boolean;
     toggleCart: () => void;
     addItemToCard: (items: Item) => void;
+    setCartItems: (items: Item[]) => void;
     emptyCard: () => void;
 }
 
@@ -15,6 +16,7 @@ interface ShoppingCartState {
 export const useShoppingCart = create<ShoppingCartState>()((set) => ({
     cartItems: [],
     isCartOpen: false,
+    setCartItems: (items) => set({ cartItems: items }),
     toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
     addItemToCard: (item) => set((state) => ({ cartItems: [...state.cartItems, item] })),
     emptyCard: () => set({ cartItems: [] }),
