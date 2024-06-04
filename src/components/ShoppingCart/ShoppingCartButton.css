@@ -3,6 +3,8 @@
     top: -7px;
     right: -7px;
     z-index: 1;
+    width: fit-content;
+    min-width: 16px;
 }
 
 .shopping-cart-btn-container {
