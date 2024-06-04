@@ -1,0 +1,16 @@
+.badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.shopping-cart-badge {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    z-index: 1;
+}
+
+.shopping-cart-action-group {
+    position: relative;
+}

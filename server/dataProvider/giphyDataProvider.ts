@@ -21,6 +21,7 @@ export class GiphyDataProvider {
                 price: NumberHelper.randomNumber(3, 18),
                 pictureUri: images.original.url,
                 stockAmount: NumberHelper.randomNumber(5, 50),
+                onSale: NumberHelper.randomNumber(1, 3) === 1,
             })
         );
     }

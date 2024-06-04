@@ -1,5 +1,5 @@
 import { Item, useStoreItemsQuery } from '../generated/Graphql';
-import { useStoreItems } from '../store/StoreItems';
+import { useStoreItems } from '../hooks/StoreItems';
 import React, { useEffect } from 'react';
 
 interface DataProviderProps {

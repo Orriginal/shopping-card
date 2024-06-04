@@ -8,6 +8,7 @@ const STORE_ITEMS = gql`
             price
             pictureUri
             stockAmount
+            onSale
         }
     }
 `;

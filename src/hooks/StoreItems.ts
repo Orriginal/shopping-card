@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { Item } from '../generated/Graphql';
+
 interface StoreItemState {
     defaultItems: Item[];
     filteredItems: Item[];
@@ -9,6 +10,10 @@ interface StoreItemState {
     setIsLoading: (isLoading: boolean) => void;
 }
 
+/**
+ * Store items state.
+ * @returns {StoreItemState}
+ */
 export const useStoreItems = create<StoreItemState>()((set) => ({
     defaultItems: [],
     filteredItems: [],

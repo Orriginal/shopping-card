@@ -2,11 +2,11 @@ import { Autocomplete, Group } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import ThemeButton from '../ThemeButton/ThemeButton';
 import './Header.css';
-import { useStoreItems } from '../../store/StoreItems';
-import { HTMLInputAutoCompleteAttribute, useRef } from 'react';
+import { useStoreItems } from '../../hooks/StoreItems';
+import ShoppingCartButton from '../ShoppingCart/ShoppingCartButton';
 
 function Header() {
-    const { defaultItems, isLoading, setStoredFilteredItems } = useStoreItems();
+    const { defaultItems, setStoredFilteredItems } = useStoreItems();
 
     const handleChange = (value: string) => {
         const filteredItems = defaultItems.filter((item) =>
@@ -14,6 +14,7 @@ function Header() {
         );
         setStoredFilteredItems(filteredItems);
     };
+
     return (
         <header className="header">
             <div className="inner">
@@ -34,6 +35,7 @@ function Header() {
                         onClick={(e) => (e.target as HTMLInputElement).select()}
                         onChange={handleChange}
                     />
+                    <ShoppingCartButton />
                     <ThemeButton />
                 </Group>
             </div>

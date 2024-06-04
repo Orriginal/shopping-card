@@ -1,4 +1,4 @@
-import { items, shoppingCard } from './dataProvider/databaseProvider';
+import { items } from './dataProvider/databaseProvider';
 import { randomUUID } from 'crypto';
 import { TShoppingItem } from './types/DatabaseTypes';
 
@@ -32,6 +32,7 @@ const createItem = (newItem: Partial<TShoppingItem>): TShoppingItem => {
         price: 0,
         pictureUri: '',
         stockAmount: 0,
+        onSale: false,
     };
     const item: TShoppingItem = { ...emptyItem, ...newItem };
     items.push(item);
@@ -45,9 +46,7 @@ const createItem = (newItem: Partial<TShoppingItem>): TShoppingItem => {
  * @param updateItem
  * @returns {TShoppingItem | undefined}
  */
-const updateItem = (
-    updateItem: Partial<TShoppingItem>,
-): TShoppingItem | undefined => {
+const updateItem = (updateItem: Partial<TShoppingItem>): TShoppingItem | undefined => {
     let item = items.find(({ id }) => id === updateItem.id);
 
     if (!item) {

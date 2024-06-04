@@ -20,6 +20,7 @@ export type Scalars = {
 export type Item = {
   __typename?: 'Item';
   id: Scalars['ID']['output'];
+  onSale: Scalars['Boolean']['output'];
   pictureUri: Scalars['String']['output'];
   price: Scalars['Float']['output'];
   stockAmount: Scalars['Int']['output'];
@@ -69,7 +70,7 @@ export type QueryGetItemArgs = {
 export type StoreItemsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type StoreItemsQuery = { __typename?: 'Query', getItems: Array<{ __typename?: 'Item', id: string, title: string, price: number, pictureUri: string, stockAmount: number }> };
+export type StoreItemsQuery = { __typename?: 'Query', getItems: Array<{ __typename?: 'Item', id: string, title: string, price: number, pictureUri: string, stockAmount: number, onSale: boolean }> };
 
 
 export const StoreItemsDocument = gql`
@@ -80,6 +81,7 @@ export const StoreItemsDocument = gql`
     price
     pictureUri
     stockAmount
+    onSale
   }
 }
     `;

@@ -7,6 +7,7 @@ const schema = buildSchema(`
     price: Float!
     pictureUri: String!
     stockAmount: Int!
+    onSale: Boolean!
   }
 
   type Query {

@@ -1,6 +1,6 @@
 import ShoppingItem from '../ShoppingItem/ShoppingItem';
 import './Store.css';
-import { useStoreItems } from '../../store/StoreItems';
+import { useStoreItems } from '../../hooks/StoreItems';
 import DotLoader from '../Loader/loader';
 import { IconAlertTriangle } from '@tabler/icons-react';
 
@@ -26,13 +26,10 @@ function Store() {
 
     return (
         <div className="store-item-container">
-            {filteredItems?.map(({ pictureUri, title, price, stockAmount }, key) => (
+            {filteredItems?.map((item, key) => (
                 <ShoppingItem
                     key={key}
-                    pictureUri={pictureUri}
-                    title={title}
-                    price={price}
-                    stockAmount={stockAmount}
+                    item={item}
                 />
             ))}
         </div>

@@ -4,9 +4,5 @@ export type TShoppingItem = {
     price: number;
     pictureUri: string;
     stockAmount: number;
-};
-
-export type TShoppingCard = {
-    id: string;
-    items: TShoppingItem[];
+    onSale: boolean;
 };
